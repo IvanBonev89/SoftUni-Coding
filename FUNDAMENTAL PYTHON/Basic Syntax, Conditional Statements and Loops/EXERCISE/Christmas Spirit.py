@@ -1,0 +1,38 @@
+quantity = int(input())
+days = int(input())
+
+ornament_set_price = 2
+tree_skirt_price = 5
+tree_garland_price = 3
+lights_price = 15
+
+total_cost = 0
+total_spirit = 0
+
+for current_day in range(1, days+1):
+    if current_day % 11 == 0:    #VAJNO DA E V NACHALOTO ZASHTOTO 22-ri DEN NAPRIMER SHTE E S GRESHNO KOLICHESTVO
+        quantity += 2
+    if current_day % 2 == 0:
+        total_cost += quantity * ornament_set_price
+        total_spirit += 5
+    if current_day % 3 == 0:
+        total_cost += quantity * (tree_skirt_price + tree_garland_price)
+        total_spirit += 3 + 10
+    if current_day % 5 == 0:
+        total_cost += quantity * lights_price
+        total_spirit += 17
+        if current_day % 3 == 0:
+            total_spirit += 30
+    if current_day % 10 == 0:
+        total_spirit -= 20
+        total_cost += tree_skirt_price + lights_price + tree_garland_price
+
+if days % 10 == 0:
+    total_spirit -= 30
+
+print(f"Total cost: {total_cost}")
+print(f"Total spirit: {total_spirit}")
+
+
+
+
